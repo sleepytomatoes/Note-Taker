@@ -15,8 +15,8 @@ var PORT = process.env.PORT || 3001;
 
 // Router
 
-require("api_routes")(app);
-require("html_routes")(app);
+require("api_route")(app);
+require("html_route")(app);
 
 // Listener 
 

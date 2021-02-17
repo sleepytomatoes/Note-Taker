@@ -1,37 +1,36 @@
-// app.get('/api/notes', (req, res) => {
-//     let json = getJson();
-//     console.log(json);
-//     res.json(json)
-// })
+// Dependencies
 
-// app.post('/api/notes', (req, res) => {
-//     addNoteToJson(req.body)
-//     res.json(getJson());
-// })
+const path = require('path');
+const fs = require('fs');
+const notes_Json = require('.../db.json')
 
-// function getJson() {
-//     let data = fs.readFileSync(__dirname + '.../db.json');
-//     let json = JSON.parse(data);
-//     console.log('data retrieved')
-//     return json;
-// }
+// file path to local database (db.json)
 
-// function createNoteObject(data) {
-//     let obj = {title: data.title,
-//                text: data.text,
-//                complete: false,
-//                hidden: false}
-//         return obj;
-// }
+const NOTES_DIR = path.resolve(__dirname, '.../db.json');
+const outputPath = path.join(NOTES_DIR, 'db.json');
 
-// function addNoteToJson(note) {
-//     let json = getJson();
-//     let newNote = createNoteObject(note);
-//     json.push(newNote);
-//     saveJson(json);
-// }
-  
-// function saveJson(jsonData) {
-//     let data = JSON.stringify(jsonData);
-//     fs.writeFileSync(__dirname + '.../db.json', data)
-// }
+let notesArr = notes_Json
+
+module.exports = function(app) {
+
+    app.get('/api/notes', function(req, res) {
+        res.json(notes_Json);
+    });
+
+    app.post('/api/notes', function(req, res) {
+
+        notesArr.push(req.body);
+
+        let noteObj = JSON.stringify(notesArr, null, 2);
+
+        fs.writeFile(outputPath, noteObj, function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("Success. Note Saved")
+            }
+            res.json(noteObj);
+        });
+    });
+
+}
