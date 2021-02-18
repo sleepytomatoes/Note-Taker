@@ -4,7 +4,7 @@
 1. [Project Description](#description)
 2. [Usage](#usage)
 3. [Dependencies](#dependencies)
-4. [Github] (#gitcontact)
+4. [Github](#gitcontact)
 
 ## Project Description <a name="description"></a>
 This app allows the user to create, save, and delete notes.
