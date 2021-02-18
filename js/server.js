@@ -5,7 +5,7 @@ const express = require('express');
 // Express Config
 
 const app = express();
-app.use(express.static("public"));
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
@@ -15,8 +15,8 @@ var PORT = process.env.PORT || 3001;
 
 // Router
 
-require("./api_route")(app);
-require("./html_route")(app);
+require("./api_route.js")(app);
+require("./html_route.js")(app);
 
 // Listener 
 
