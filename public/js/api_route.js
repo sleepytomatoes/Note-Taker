@@ -2,7 +2,7 @@
 
 const path = require('path');
 const fs = require('fs');
-const notes_Json = require('../../db/db.json')
+const notes_Json = require('../db/db.json')
 
 // file path to local database (db.json)
 

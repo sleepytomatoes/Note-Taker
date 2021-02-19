@@ -8,6 +8,7 @@
 
 ## Project Description <a name="description"></a>
 This app allows the user to create, save, and delete notes.
+![screenshot](/images/screenshot.jpeg)
 
 ## Usage <a name="usage"></a>
 The app can be accessed through the web [browser](https://git.heroku.com/mighty-sea-70212.git)
